@@ -1,0 +1,28 @@
+#!/bin/bash
+
+DATA=$(date +%H%M%S%d%m%Y)
+
+cd /home/oem/Documentos/arquivosRTC
+
+echo "-=-=-=-=-=-="
+echo "Informe o RTC: "
+read rtc
+
+echo "____________"
+cd $rtc
+
+mkdir -p LOGS
+
+CAMINHO=$(pwd)
+
+ARQLOG="$DATA-$rtc.log"
+echo "Iniciando..." >> $ARQLOG 2>&1
+
+echo "-----------------------------" >> $ARQLOG 2>&1
+
+while read p; do
+  ORIGEM=`echo "$p" | awk -F';' '{ print $1 }'`
+  DESTINO=`echo "$p" | awk -F';' '{ print $2 }'`
+  LAST=$(basename $ORIGEM)
+  
+done < arquivoConf.txt
