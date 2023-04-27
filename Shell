@@ -54,5 +54,11 @@ echo "_______________________________________________" >> $ARQLOG 2>&1
 mv $CAMINHO/$ARQLOG $CAMINHO/LOGS
 
 echo "Shell executado!"
-echo "Confira os resultados em arqLog.txt"
+echo "Quantidade de ERROS: "
+echo grep ERRO $ARQLOG |wc -l
+echo "Confira os resultados em: "
+cd $CAMINHO/LOGS
+
+PWD=`pwd`
+echo "$PWD/$ARQLOG"
 echo $DATA
